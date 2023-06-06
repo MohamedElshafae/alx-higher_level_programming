@@ -11,6 +11,6 @@ def pow(a, b):
         return (1 / a)
     for i in range(1, b):
         a *= a
-    if flag == 1:
+    if flag == 1 and b % 2 != 0:
         return -a
     return a
