@@ -8,22 +8,19 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *p;
+	int arr[2000] = {0};
+	int len, flag, i;
+
 	p = *head;
 
 	if (!head || !*head)
 		return (1);
-
-	int arr[2000] = {0};
-	int len;
-
 	len = 0;
 	while (p)
 	{
 		len++;
 		p = p->next;
 	}
-	int i, flag;
-
 	flag = 1;
 	i = 0;
 
