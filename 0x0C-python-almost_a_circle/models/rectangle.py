@@ -5,6 +5,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """represent Rectangle tha inherit Base"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """init Rectangle"""
         self.width = width
@@ -42,6 +43,7 @@ class Rectangle(Base):
             raise ValueError("height must be >= 0")
         else:
             self.__height = value
+
     @property
     def x(self):
         """x getter"""
@@ -86,7 +88,8 @@ class Rectangle(Base):
 
     def __str__(self):
         """returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} \
+                - {self.width}/{self.height}"
 
     def update(self, *args, **kwargs):
         """ update values """

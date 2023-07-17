@@ -3,19 +3,18 @@
 import json
 
 
-
 class Base:
     """represent Base"""
     __nb_objects = 0
 
     def __init__(self, id=None):
         """init Base class"""
-        if id == None:
+        if id is None:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
         else:
             self.id = id
-    
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """convert dictionary to json file"""
@@ -23,13 +22,14 @@ class Base:
             return []
         return json.dumps(list_dictionaries)
 
-    @classmethod   
+    @classmethod
     def save_to_file(cls, list_objs):
         """writes the JSON string representation of list_objs to a file"""
         fileName = cls.__name__ + ".json"
         with open(fileName, "w") as f:
             for obj in list_objs:
-                json.dump(json.loads(cls.to_json_string((obj.to_dictionary()))), f)
+                json.dump(json.loads(cls.to_json_string(
+                    (obj.to_dictionary()))), f)
 
     @staticmethod
     def from_json_string(json_string):
@@ -58,13 +58,10 @@ class Base:
             fileName = cls.__name__ + ".json"
             with open(fileName, "r", encoding="UTF8") as f:
                 data = cls.from_json_string(f.read())
-        except:
+        except Exception:
             return []
         obj = []
         for i in data:
             t = cls.create(**i)
             obj.append(t)
-
         return obj
-
-
