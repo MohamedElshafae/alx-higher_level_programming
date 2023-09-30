@@ -9,4 +9,3 @@ if __name__ == "__main__":
     url = argv[1]
     response = get(url)
     print(response.headers['X-Request-Id'])
-
